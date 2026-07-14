@@ -12,9 +12,7 @@
 
 ## 🌐 Live Demo
 
-🔗 **Website:** https://your-live-url.vercel.app
-
-> Replace this with your live website URL.
+🔗 **Website:** (https://irauthan.github.io/Kathait-Wedding-Point/)
 
 ---
 
