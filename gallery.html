@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Browse high-resolution photographs and cinematic video tours of Kathait Wedding Point and Homestay in Jamnikhal, Devprayag near Chandrabadni, Uttarakhand. Grand wedding setups, mountain rooms, gym, and outdoor lawns.">
+  <meta name="keywords"
+    content="Kathait Wedding Photos, Devprayag Banquet Gallery, Uttarakhand Marriage Point Photos, Homestay Room Pictures Chandrabadni, Wedding Lawn Photos Devprayag">
+  <meta name="author" content="Kathait Wedding Point & Homestay">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Photo Gallery & Cinematic Video Tour | Kathait Wedding Point">
+  <meta property="og:description"
+    content="Explore our photo gallery and cinematic venue video showcasing wedding stages, mountain views, homestay suites, and gym in Uttarakhand.">
+  <meta property="og:image" content="D1.jpeg">
+  <meta property="og:url" content="https://kathaitweddingpoint.com/gallery.html">
+  <meta property="og:type" content="website">
+
+  <title>Photo Gallery & Cinematic Video Tour | Kathait Wedding Point</title>
+
+  <link rel="icon" type="image/png" href="D1.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+  </div>
+
+  <!-- Preloader Screen -->
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader-logo">Kathait <span>Wedding Point</span></div>
+    <div class="preloader-spinner"></div>
+    <p class="mt-3 text-uppercase letter-spacing-2" style="font-size: 0.75rem; letter-spacing: 0.15em;">Loading Experience...</p>
+  </div>
+
+  <!-- Sticky Premium Navigation Bar -->
+  <nav class="navbar navbar-expand-lg custom-navbar" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-custom" href="index.html" id="navLogo">
+        Kathait <span>Wedding Point</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="bi bi-list text-white" id="togglerIcon" style="font-size: 1.5rem;"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="venue.html">Venue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="homestay.html">Homestay</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="gym.html">Gym</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom active" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="packages.html">Packages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+            <a class="btn-nav-book" href="contact.html"><i class="bi bi-calendar-check me-1"></i> Book Now</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Inner Page Hero Banner -->
+  <header class="page-banner">
+    <div class="container">
+      <span class="page-banner-subtitle reveal-elem">Visual Journey & Captured Celebrations</span>
+      <h1 class="page-banner-title reveal-elem">Kathait Media Gallery & Cinematic Tour</h1>
+      <div class="page-breadcrumb reveal-elem">
+        <a href="index.html">Home</a>
+        <i class="bi bi-chevron-right text-white-50" style="font-size: 0.75rem;"></i>
+        <span class="current">Media Gallery</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive Filterable Gallery Section -->
+  <section class="section-padding bg-light-luxury" id="gallery">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tagline">Captured Moments</span>
+        <h2 class="section-title">Photo Gallery</h2>
+        <p class="section-desc">Click any category tab below to filter our wedding setups, homestay rooms, fitness facilities, and scenic outdoor grounds.</p>
+      </div>
+
+      <!-- Filter Category Buttons -->
+      <div class="gallery-filter-wrapper reveal-elem">
+        <button class="gallery-filter-btn active" data-filter="all">All</button>
+        <button class="gallery-filter-btn" data-filter="weddings">Weddings</button>
+        <button class="gallery-filter-btn" data-filter="homestay">Homestay</button>
+        <button class="gallery-filter-btn" data-filter="gym">Gym</button>
+        <button class="gallery-filter-btn" data-filter="outdoors">Outdoors</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Item 1 (Weddings) D1.jpeg -->
+        <div class="gallery-item" data-category="weddings">
+          <img src="D1.jpeg" alt="Kathait Wedding Point grand floral entrance and welcome arch in Uttarakhand">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Weddings</div>
+            <h4 class="gallery-item-title">Grand Floral Entrance</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 2 (Weddings) D3.jpeg -->
+        <div class="gallery-item" data-category="weddings">
+          <img src="D3.jpeg" alt="Kathait Wedding Point stage backdrop and floral wedding arch">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Weddings</div>
+            <h4 class="gallery-item-title">Stage Backdrop & Floral Arch</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 3 (Weddings) D5.jpeg -->
+        <div class="gallery-item" data-category="weddings">
+          <img src="D5.jpeg" alt="Kathait Wedding Point ambient stage lighting and reception seating">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Weddings</div>
+            <h4 class="gallery-item-title">Ambient Stage Uplighting</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 4 (Homestay) -->
+        <div class="gallery-item" data-category="homestay">
+          <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80"
+            alt="Kathait Homestay deluxe bed suite near Chandrabadni">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Luxury Homestay</div>
+            <h4 class="gallery-item-title">Deluxe Bed Suite</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 5 (Gym) -->
+        <div class="gallery-item" data-category="gym">
+          <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
+            alt="Kathait fitness gym weights and cardio workout zone">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Fitness Gym</div>
+            <h4 class="gallery-item-title">Gym Weights & Cardio Zone</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 6 (Outdoors) -->
+        <div class="gallery-item" data-category="outdoors">
+          <img src="WhatsApp Image 2026-06-23 at 4.43.45 PM.jpeg" alt="Kathait Homestay scenic mountain valley view lawn">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Outdoors</div>
+            <h4 class="gallery-item-title">Scenic Valley View Lawn</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 7 (Weddings) D8.jpeg -->
+        <div class="gallery-item" data-category="weddings">
+          <img src="D8.jpeg" alt="Engagement backdrop and stage design in Devprayag">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Weddings</div>
+            <h4 class="gallery-item-title">Engagement Backdrop Design</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 8 (Homestay) -->
+        <div class="gallery-item" data-category="homestay">
+          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
+            alt="Kathait Homestay mountain view balcony in Uttarakhand">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Luxury Homestay</div>
+            <h4 class="gallery-item-title">Homestay Mountain Balcony</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 9 (Weddings) D11.jpeg -->
+        <div class="gallery-item" data-category="weddings">
+          <img src="D11.jpeg" alt="Haldi and mandap theme wedding decor in Uttarakhand">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Weddings</div>
+            <h4 class="gallery-item-title">Haldi & Mandap Theme Decor</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 10 (Weddings) D6.jpeg -->
+        <div class="gallery-item" data-category="weddings">
+          <img src="D6.jpeg" alt="Grand wedding reception dining and stage decoration in Uttarakhand">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Weddings</div>
+            <h4 class="gallery-item-title">Banquet Dining & Seating</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 11 (Weddings) D7.jpeg -->
+        <div class="gallery-item" data-category="weddings">
+          <img src="D7.jpeg" alt="Birthday party celebration setup at Kathait Wedding Point">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Weddings</div>
+            <h4 class="gallery-item-title">Celebration Balloon Arch</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+
+        <!-- Item 12 (Weddings) D10.jpeg -->
+        <div class="gallery-item" data-category="weddings">
+          <img src="D10.jpeg" alt="Retirement party celebration hall setup in Uttarakhand">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-tag">Weddings</div>
+            <h4 class="gallery-item-title">Reception Hall Uplighting</h4>
+          </div>
+          <div class="gallery-zoom-icon"><i class="bi bi-zoom-in"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Showcase Section -->
+  <section class="section-padding bg-white-luxury">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tagline">Cinematic Tour</span>
+        <h2 class="section-title">Venue Highlights Video</h2>
+        <p class="section-desc">Experience our venue ambiance in motion — explore the hall layout, stage designs, and surrounding Himalayan vistas.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10 reveal-elem zoom-in">
+          <div class="video-section-container">
+            <video id="venueVideo" controls preload="metadata">
+              <source src="Dvid1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <div class="video-section-overlay" id="videoOverlay">
+              <div class="video-play-btn-circle" id="videoPlayBtn">
+                <i class="bi bi-play-fill" id="playIcon"></i>
+              </div>
+              <div class="video-section-overlay-text">
+                <h3 class="h4 text-white font-heading fw-bold">A Beautiful Glimpse of Kathait Wedding Point</h3>
+                <p class="text-white-50 mb-0">Tour our luxury decorations, stages, dining areas, and mountain scenery in motion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for Gallery Images -->
+  <div class="modal fade" id="imageLightboxModal" tabindex="-1" aria-labelledby="imageLightboxTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white border-gold">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title font-heading text-gold" id="imageLightboxTitle"></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-3">
+          <img id="lightboxImage" src="" alt="" class="img-fluid rounded-3" style="max-height: 75vh; object-fit: contain;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Footer -->
+  <footer class="premium-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <a class="footer-logo" href="index.html">Kathait <span>Wedding Point & Homestay</span></a>
+          <p class="footer-desc">Comfortable homestay lodging, luxury wedding venue, and modern fitness gym set in the scenic landscapes of Jamnikhal near Chandrabadni, Devprayag, Uttarakhand, India.</p>
+          <div class="footer-contact-item">
+            <i class="bi bi-telephone-fill"></i>
+            <span>+91 97590 38703</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-envelope-fill"></i>
+            <span>info@kathaitweddingpoint.com</span>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6 ms-lg-auto">
+          <h4 class="footer-title-luxury">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="venue.html">The Venue</a></li>
+            <li><a href="gallery.html">Media Gallery</a></li>
+            <li><a href="packages.html">Pricing Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h4 class="footer-title-luxury">Key Facilities</h4>
+          <ul class="footer-links-list">
+            <li><a href="venue.html">Wedding Venue</a></li>
+            <li><a href="homestay.html">Kathait Homestay</a></li>
+            <li><a href="gym.html">Fitness Gym Facility</a></li>
+            <li><a href="services.html">Ceremonies & Events</a></li>
+            <li><a href="packages.html">Royal Reception Combo</a></li>
+            <li><a href="contact.html">Contact & Directions</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-title-luxury">Find Us On Maps</h4>
+          <p class="text-white-50 small mb-3">Conveniently located on the main highway in Jamnikhal, Devprayag near Chandrabadni.</p>
+          <a href="https://maps.app.goo.gl/LMbWWKd8X5KCNxi6A" target="_blank"
+            class="btn btn-gold text-white btn-sm px-3" style="font-size: 0.8rem;">
+            <i class="bi bi-geo-alt-fill me-1"></i> Open Google Maps
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="row align-items-center">
+          <div class="col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
+            <p>&copy; 2026 Kathait Wedding Point & Homestay. All Rights Reserved.</p>
+          </div>
+          <div class="col-lg-6 text-center text-lg-end">
+            <div class="footer-legal-links">
+              <a href="contact.html">Privacy Policy</a>
+              <span class="divider">•</span>
+              <a href="contact.html">Terms of Service</a>
+              <span class="divider">•</span>
+              <a href="contact.html">Guest Policy</a>
+              <span class="divider">•</span>
+              <a href="contact.html">Cancellation Rules</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Call / Action Buttons -->
+  <div class="floating-actions-container">
+    <a href="tel:+919759038703" class="floating-action-btn btn-phone pulse" data-tooltip="Call Us Now" aria-label="Call Owner Phone">
+      <i class="bi bi-telephone-outbound-fill"></i>
+    </a>
+    <a href="https://wa.me/919759038703" class="floating-action-btn btn-whatsapp pulse" data-tooltip="WhatsApp Chat" aria-label="Chat via WhatsApp">
+      <i class="bi bi-whatsapp"></i>
+    </a>
+    <a href="contact.html" class="floating-action-btn btn-book-float" data-tooltip="Book Event" aria-label="Book Event">
+      <i class="bi bi-calendar-check-fill"></i>
+    </a>
+    <button class="floating-action-btn btn-back-to-top" id="backToTop" data-tooltip="Back to Top" aria-label="Scroll back to top">
+      <i class="bi bi-chevron-up"></i>
+    </button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

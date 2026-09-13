@@ -40,11 +40,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // --- 3. STICKY NAVBAR & ACTIVE NAV LINKS ON SCROLL ---
+  // --- 3. STICKY NAVBAR & ACTIVE NAV LINKS ---
   const navbar = document.querySelector(".custom-navbar");
   const navLinks = document.querySelectorAll(".nav-link-custom");
-  const sections = document.querySelectorAll("section[id]");
+  const sections = document.querySelectorAll("header[id], section[id]");
   const backToTop = document.getElementById("backToTop");
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+  // Multi-page active link highlighter based on current file
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    if (href === currentPath || (currentPath === "" && href === "index.html") || (currentPath === "index.html" && href === "index.html")) {
+      link.classList.add("active");
+    } else if (href.includes(".html")) {
+      link.classList.remove("active");
+    }
+  });
 
   function handleScrollEffects() {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
@@ -57,27 +68,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Back to top floating button visibility
-    if (scrollY > 600) {
+    if (scrollY > 500) {
       backToTop.classList.add("show");
     } else {
       backToTop.classList.remove("show");
     }
 
-    // Active Section link highlighter
-    sections.forEach((section) => {
-      const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 120; // offset for sticky navbar
-      const sectionId = section.getAttribute("id");
-
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+    // If on homepage with hash sections, run dynamic scrollspy
+    if (currentPath === "index.html" || currentPath === "") {
+      if (scrollY < 200) {
         navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${sectionId}`) {
+          if (link.getAttribute("href") === "index.html" || link.getAttribute("href") === "#home") {
             link.classList.add("active");
           }
         });
       }
-    });
+    }
   }
 
   window.addEventListener("scroll", handleScrollEffects);
@@ -108,30 +114,58 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // --- 5. SMOOTH SCROLL FOR NAV LINKS ---
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function(e) {
+  // --- 5. UNIVERSAL SMOOTH SCROLL FOR ALL ANCHORS & NAV LINKS ---
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function(e) {
       const targetId = this.getAttribute("href");
-      if (targetId.startsWith("#")) {
-        e.preventDefault();
-        const targetSection = document.querySelector(targetId);
-        if (targetSection) {
-          // Close mobile collapse if open
-          const navbarCollapse = document.getElementById("navbarNav");
-          if (navbarCollapse.classList.contains("show")) {
-            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-            if (bsCollapse) bsCollapse.hide();
-          }
+      if (targetId && targetId !== "#" && targetId !== "#!") {
+        try {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
 
-          const targetOffset = targetSection.offsetTop - 80; // height of sticky bar
-          window.scrollTo({
-            top: targetOffset,
-            behavior: "smooth"
-          });
+            // Update active link styling if clicked anchor is in navbar
+            if (this.classList.contains("nav-link-custom")) {
+              navLinks.forEach(l => l.classList.remove("active"));
+              this.classList.add("active");
+            }
+
+            // Close mobile collapse drawer if open
+            const navbarCollapse = document.getElementById("navbarNav");
+            if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+              const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+              if (bsCollapse) bsCollapse.hide();
+            }
+
+            const navbarHeight = navbar ? navbar.offsetHeight : 70;
+            const targetOffset = targetId === "#home" ? 0 : targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight + 5;
+            window.scrollTo({
+              top: Math.max(0, targetOffset),
+              behavior: "smooth"
+            });
+          }
+        } catch (err) {
+          // Fallback if selector is not standard
         }
       }
     });
   });
+
+  // Handle smooth scroll on load if URL has hash (e.g. index.html#contact)
+  if (window.location.hash) {
+    setTimeout(() => {
+      try {
+        const hashElem = document.querySelector(window.location.hash);
+        if (hashElem) {
+          const navbarHeight = navbar ? navbar.offsetHeight : 70;
+          const offset = hashElem.getBoundingClientRect().top + window.pageYOffset - navbarHeight + 5;
+          window.scrollTo({ top: Math.max(0, offset), behavior: "smooth" });
+        }
+      } catch (err) {
+        // Safe catch for invalid hash selectors
+      }
+    }, 500);
+  }
 
 
   // --- 6. SCROLL REVEAL ANIMATIONS (Intersection Observer) ---
@@ -171,7 +205,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function runCounters() {
     counters.forEach((counter) => {
-      const target = +counter.getAttribute("data-target");
+      const targetAttr = counter.getAttribute("data-target");
+      if (!targetAttr || isNaN(targetAttr)) return; // Skip non-numeric labels like Jamnikhal
+      
+      const target = +targetAttr;
       const duration = 2000; // 2 seconds
       const speed = duration / target;
       
@@ -344,19 +381,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // --- 10. PRESET EVENT INQUIRY TYPE FROM PACKAGE BUTTONS ---
+  // --- 10. PRESET EVENT INQUIRY TYPE FROM PACKAGE BUTTONS & URL PARAMS ---
   const bookButtons = document.querySelectorAll(".book-package-btn");
   const eventSelect = document.getElementById("eventType");
 
+  // Check URL parameters for ?package=... (e.g. from packages.html)
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pkgParam = urlParams.get("package");
+    if (pkgParam && eventSelect) {
+      eventSelect.value = pkgParam;
+    }
+  } catch (err) {
+    // Graceful fallback for environments without URLSearchParams
+  }
+
   bookButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
       const packageType = btn.getAttribute("data-package");
       if (eventSelect && packageType) {
         eventSelect.value = packageType;
         
-        // Scroll smoothly to contact section
+        // If on same page with #contact section, scroll smoothly
         const contactSection = document.getElementById("contact");
         if (contactSection) {
+          e.preventDefault();
           const targetOffset = contactSection.offsetTop - 80;
           window.scrollTo({
             top: targetOffset,
@@ -373,20 +422,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const toastNotification = document.getElementById("toastNotification");
 
   function showToast(message, isSuccess = true) {
+    const alertBox = document.getElementById("bookingStatusAlert");
+    if (alertBox) {
+      alertBox.className = `alert mt-4 ${isSuccess ? "alert-success" : "alert-danger"}`;
+      alertBox.innerHTML = `<i class="bi ${isSuccess ? "bi-check-circle-fill" : "bi-exclamation-triangle-fill"} me-2"></i> ${message}`;
+      alertBox.classList.remove("d-none");
+      alertBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
     if (!toastNotification) return;
     
     const toastIcon = toastNotification.querySelector("i");
     const toastText = toastNotification.querySelector(".toast-text");
     
+    if (toastIcon) {
+      toastIcon.className = isSuccess ? "bi bi-check-circle-fill text-success" : "bi bi-exclamation-triangle-fill text-danger";
+    }
+    if (toastText) {
+      toastText.innerText = message;
+    }
     if (isSuccess) {
       toastNotification.style.borderLeft = "5px solid #28a745";
-      toastIcon.className = "bi bi-check-circle-fill text-success";
     } else {
       toastNotification.style.borderLeft = "5px solid #dc3545";
-      toastIcon.className = "bi bi-exclamation-triangle-fill text-danger";
     }
     
-    toastText.innerText = message;
     toastNotification.classList.add("show");
     
     setTimeout(() => {
@@ -398,19 +458,20 @@ document.addEventListener("DOMContentLoaded", () => {
     contactForm.addEventListener("submit", function(e) {
       e.preventDefault();
 
-      // Form data extraction
-      const name = document.getElementById("fullName").value.trim();
-      const phone = document.getElementById("phoneNumber").value.trim();
-      const email = document.getElementById("emailAddress").value.trim();
-      const eventType = document.getElementById("eventType").value;
-      const eventDate = document.getElementById("eventDate").value;
-      const guests = document.getElementById("guestCount").value;
-      const subject = document.getElementById("subject").value.trim();
-      const message = document.getElementById("message").value.trim();
+      // Safe form data extraction
+      const name = document.getElementById("fullName") ? document.getElementById("fullName").value.trim() : "";
+      const phone = document.getElementById("phoneNumber") ? document.getElementById("phoneNumber").value.trim() : "";
+      const email = document.getElementById("emailAddress") ? document.getElementById("emailAddress").value.trim() : "";
+      const eventType = document.getElementById("eventType") ? document.getElementById("eventType").value : "";
+      const eventDate = document.getElementById("eventDate") ? document.getElementById("eventDate").value : "";
+      const guests = document.getElementById("guestCount") ? document.getElementById("guestCount").value : "";
+      const subject = document.getElementById("subject") ? document.getElementById("subject").value.trim() : "Event Booking Enquiry";
+      const messageElem = document.getElementById("message") || document.getElementById("messageText");
+      const message = messageElem ? messageElem.value.trim() : "";
 
       // Basic field validation
-      if (!name || !phone || !email || !eventType || !eventDate || !message) {
-        showToast("Please fill in all the required fields.", false);
+      if (!name || !phone || !eventType) {
+        showToast("Please fill in all required fields (Name, Phone, and Event Type).", false);
         return;
       }
 
