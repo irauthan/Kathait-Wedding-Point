@@ -109,39 +109,6 @@ Kathait-Wedding-Point/
 └── README.md           # Project Documentation
 ```
 
----
-
-## 🚀 Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/irauthan/kathait-wedding-point.git
-```
-
-Open the project:
-
-```text
-Open index.html in your browser
-```
-
-Or run it using **VS Code Live Server**.
-
----
-
-## 📱 Responsive Support
-
-Optimized for:
-
-- 💻 Desktop
-- 💼 Laptop
-- 📱 Android Phones
-- 📱 iPhone
-- 📲 Tablets
-- 🖥️ Large Displays
-
----
-
 ## 📍 Location
 
 **Kathait Wedding Point**
