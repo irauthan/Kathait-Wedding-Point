@@ -2394,7 +2394,7 @@ body.no-scroll {
  * ========================================================================= */
 .page-banner {
   position: relative;
-  background: linear-gradient(135deg, rgba(17, 26, 46, 0.94), rgba(28, 40, 68, 0.88)), url('D1.jpeg');
+  background: linear-gradient(135deg, rgba(17, 26, 46, 0.94), rgba(28, 40, 68, 0.88)), url('../images/D1.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: scroll;

@@ -88,13 +88,25 @@ Kathait Wedding Point is a modern and elegant business website designed to showc
 ```text
 Kathait-Wedding-Point/
 │
-├── index.html
-├── style.css
-├── script.js
+├── index.html          # Homepage & Hero Showcase
+├── about.html          # Heritage, Values & Story
+├── services.html       # 12 Celebration Services & Amenities
+├── venue.html          # Banquet Hall & Mountain Lawns
+├── homestay.html       # Kathait Homestay & Chandrabadni Guide
+├── gym.html            # Fitness Center & Membership Plans
+├── gallery.html        # Interactive Photo & Video Gallery
+├── packages.html       # Tiered Event Packages & Comparison Table
+├── contact.html        # Booking Enquiry Form, Maps & Directions
+│
 ├── assets/
-│   ├── images/
-│   └── videos/
-└── README.md
+│   ├── css/
+│   │   └── style.css   # Main Theme & Responsive Stylesheet
+│   ├── js/
+│   │   └── script.js   # Interactivity, Smooth Scroll & Form Logic
+│   ├── images/         # Event & Venue Photographs
+│   └── videos/         # Cinematic Tour Video (Dvid1.mp4)
+│
+└── README.md           # Project Documentation
 ```
 
 ---
